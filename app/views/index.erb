@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' type='text/css'>
+  </head>
+
+  <body>
+
+    <h1>Events</h1>
+    <ul>
+      <% @events.each do |event| %>
+        <br />
+        <li><%= event.date %></li>
+        <li><%= event.event_name %></li>
+        <li><%= event.event_url %></li>
+        <li><%= event.group_name %></li>
+        <br />
+      <% end %>
+    </ul>
+  </body>
+</html>
+
+
