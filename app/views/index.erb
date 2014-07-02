@@ -10,9 +10,10 @@
     <ul>
       <% @events.each do |event| %>
         <p>Date: <%= event.date %></p>
-        <a href="<%= event.event_url %>"/>
-        <p>Event: <%= event.event_name %></p>
-        <p>Group: <%= event.group_name %></p></a>
+        <a href="<%= event.url %>"/>
+        <p>Event: <%= event.name %></p></a>
+        <p>Group: event.group.name - tried to add this but it breaks everything!</p>
+        <p>Popularity: event.group.count - tried to add this but it breaks everything!</p>
         <br />
       <% end %>
     </ul>
