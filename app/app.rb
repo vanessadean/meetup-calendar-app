@@ -22,8 +22,7 @@ class App < Sinatra::Base
         event.group.count ||= 0
         event.group.count += 1
         event.group.color ||= rand(255)
-        event.group.save
-
+        event.save
         #binding.pry
       end
     end
