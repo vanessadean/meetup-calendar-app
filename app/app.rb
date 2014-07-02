@@ -1,6 +1,15 @@
 class App < Sinatra::Base
 
   def initialize
+    # members_uri ||= URI("https://api.meetup.com/2/members?group_id=14306982&key=4d414d6bb7e7f7fb442a717a207f")
+    # members_hash = JSON.parse(Net::HTTP.get(members_uri))
+    # @members = []
+    # members_hash["results"].each do |result|
+    #   @members << result["id"]
+    # end
+  end
+
+  def get_events
     [9053050, 43730002, 2687742, 152155482, 93522962].each do |id|
       uri = URI("https://api.meetup.com/2/events?&sign=true&member_id=#{id}&key=4d414d6bb7e7f7fb442a717a207f")
       my_hash = JSON.parse(Net::HTTP.get(uri))
