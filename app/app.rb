@@ -16,3 +16,7 @@ class App < Sinatra::Base
   end
 
 end
+
+# pull dynamic member list 
+# request with Flatiron Presents group id with https://api.meetup.com/2/members?group_id=14306982&key=4d414d6bb7e7f7fb442a717a207f
+# flatiron presents id and the api key
