@@ -9,7 +9,6 @@
     <h1>Events</h1>
     <ul>
       <% @events.each do |event| %>
-        <br />
         <p>Date: <%= event.date %></p>
         <a href="<%= event.event_url %>"/>
         <p>Event: <%= event.event_name %></p>
