@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702182042) do
+ActiveRecord::Schema.define(version: 20140703040203) do
 
   create_table "events", force: true do |t|
     t.string  "date"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140702182042) do
   create_table "groups", force: true do |t|
     t.string  "name"
     t.string  "color"
-    t.integer "count", limit: 255
+    t.integer "popularity", limit: 255
   end
 
 end

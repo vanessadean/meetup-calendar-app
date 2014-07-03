@@ -1,7 +1,7 @@
 class EventController < Sinatra::Base
     
   get '/' do
-    @events = Event.all
+    @events = Event.all.uniq
     erb :index
   end
   

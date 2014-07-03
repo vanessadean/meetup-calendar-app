@@ -1,21 +1,20 @@
 <!doctype html>
 <html>
   <head>
-    <link rel='bootstrap.min.css' type='text/css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
 
   <body>
-
-    <h1>Events</h1>
+    <div class="container-fluid">
+    <h1>Other Meetup Events for Members of Flatiron Presents</h1>
     <ul>
       <% @events.each do |event| %>
         <p>Date: <%= event.date %></p>
-        <p style="color: rgb(<%=event.group.color%>)"><a href="<%= event.url %>"/>
-        <%= event.name %></a> - <%= event.group.name %></p>
-        <p>Popularity: <%= event.group.count %></p>
-        <br />
+        <p><a href="<%= event.url %>" style="color: rgb(<%= event.group.color %>); font-size: <%= event.font_size %>px"/>
+        <%= event.name %> - <%= event.group.name %></p></a>
       <% end %>
     </ul>
+    </div>
   </body>
 </html>
 
