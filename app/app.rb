@@ -1,3 +1,5 @@
+require_relative '../config/environment.rb'
+require 'pry'
 require 'database_cleaner'
 
 class App < Sinatra::Base
@@ -20,17 +22,22 @@ class App < Sinatra::Base
       my_hash = JSON.parse(Net::HTTP.get(uri))
       
       my_hash["results"].each do |result|
-        event = Event.create(:name => result["name"])
-        event.date = result["time"]
-        event.url = result["event_url"]
-        event.group = Group.find_or_create_by(:name => result["group"]["name"])
-        # event.group.popularity ||= 0
-        # event.group.popularity += 1
-        event.save
-      end
+        # binding.pry
+        event = Event.find_or_create_by(:name => result["name"], :date => result["time"], :url => result["event_url"])
+        # assume we have number_members column
+        event.number_members ||= 0
+        event.number_members += 1
 
-      Group.assign_colors
-      Group.get_popularity
+        # event.group = Group.find_or_create_by(:name => result["group"]["name"])
+        # # event.group.popularity ||= 0
+        # # event.group.popularity += 1
+        event.save
+        # binding.pry
+      end
+      # binding.pry
+
+      # Group.assign_colors
+      # Group.get_popularity
 
       # Group.all.each do |group|
       #   group.color ||= "#{rand(255)},#{rand(255)},#{rand(255)}"
@@ -45,6 +52,6 @@ class App < Sinatra::Base
       # end
     end
   end
-
 end
 
+# App.new

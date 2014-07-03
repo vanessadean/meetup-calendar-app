@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703040203) do
+ActiveRecord::Schema.define(version: 20140703213522) do
 
   create_table "events", force: true do |t|
     t.string  "date"
     t.string  "url"
     t.string  "name"
     t.integer "group_id"
+    t.integer "number_members"
   end
 
   create_table "groups", force: true do |t|
