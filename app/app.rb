@@ -4,53 +4,19 @@ require 'database_cleaner'
 
 class App < Sinatra::Base
 
-  def initialize
+  def initialize  
     Group.delete_all
     Event.delete_all
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean
+    self.class.members
+  end
 
-    # members_uri ||= URI("https://api.meetup.com/2/members?group_id=14306982&key=4d414d6bb7e7f7fb442a717a207f") # includes Flatiron Presents group id and my api key
-    # members_hash = JSON.parse(Net::HTTP.get(members_uri))
-    # @members = []
-    # members_hash["results"].each do |result|
-    #   @members << result["id"]
-    # end
-
-    [9053050, 43730002, 2687742, 152155482, 93522962].each do |id|
-      uri = URI("https://api.meetup.com/2/events?&sign=true&member_id=#{id}&key=4d414d6bb7e7f7fb442a717a207f")
-      my_hash = JSON.parse(Net::HTTP.get(uri))
-      
-      my_hash["results"].each do |result|
-        # binding.pry
-        event = Event.find_or_create_by(:name => result["name"], :date => result["time"], :url => result["event_url"])
-        # assume we have number_members column
-        event.number_members ||= 0
-        event.number_members += 1
-
-        # event.group = Group.find_or_create_by(:name => result["group"]["name"])
-        # # event.group.popularity ||= 0
-        # # event.group.popularity += 1
-        event.save
-        # binding.pry
-      end
-      # binding.pry
-
-      # Group.assign_colors
-      # Group.get_popularity
-
-      # Group.all.each do |group|
-      #   group.color ||= "#{rand(255)},#{rand(255)},#{rand(255)}"
-      #   group.save
-      # end
-
-      # Event.all.each do |event|
-      #   group = Group.find_by(:id => event.group_id)
-      #   group.popularity ||= 0
-      #   group.popularity += 1
-      #   group.save
-      # end
-    end
+  def self.members
+    members_uri ||= URI("https://api.meetup.com/2/members?group_id=14306982&key=4d414d6bb7e7f7fb442a717a207f") 
+    # includes Flatiron Presents group id and my api key
+    members_hash = JSON.parse(Net::HTTP.get(members_uri))
+    members_hash["results"].collect {|result| result["id"] }
   end
 end
 

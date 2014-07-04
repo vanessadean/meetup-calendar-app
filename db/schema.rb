@@ -11,20 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703213522) do
+ActiveRecord::Schema.define(version: 20140703235916) do
 
   create_table "events", force: true do |t|
     t.string  "date"
     t.string  "url"
     t.string  "name"
     t.integer "group_id"
-    t.integer "number_members"
   end
 
   create_table "groups", force: true do |t|
     t.string  "name"
     t.string  "color"
-    t.integer "popularity", limit: 255
+    t.integer "number_members", limit: 255
   end
 
 end

@@ -6,14 +6,19 @@
 
   <body>
     <div class="container-fluid">
-    <h1>Other Meetup Events for Members of Flatiron Presents</h1>
+    <h1>Meetup Events This Week</h1>
     <ul>
       <% @events.each do |event| %>
         <p>Date: <%= event.date %></p>
-        <p><a href="<%= event.url %>" style="color: rgb(<%= event.group.color %>); font-size: <%= event.font_size %>px"/>
+        <p><a href="<%= event.url %>" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>px; line-height:0.9; target="_blank/>
         <%= event.name %> - <%= event.group.name %></p></a>
       <% end %>
     </ul>
+
+    <form action="/events" method="POST">
+    <button type="submit">Sample more?</button>
+    </form>
+
     </div>
   </body>
 </html>

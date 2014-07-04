@@ -1,20 +1,25 @@
 class Group < ActiveRecord::Base
   has_many  :events
 
-  def self.assign_colors
-    self.all.each do |group|
-      group.color ||= "#{rand(255)},#{rand(255)},#{rand(255)}"
-      group.save
-    end
+  def assign_color
+    self.color ||= "#{rand(80)},#{rand(255)},#{rand(255)}"
   end
 
-  def self.get_popularity
+  def get_members
+    self.number_members ||= 1
     Event.all.each do |event|
-      group = self.find_by(:id => event.group_id)
-      group.popularity ||= 0
-      group.popularity += 1
-      group.save
+      self.number_members += 1 if event.group_id == self.id
     end
+    self.save
   end
 
+  def font_size
+    if self.number_members < 25
+      16
+    elsif self.number_members > 100
+      48
+    else
+      36
+    end
+  end
 end
