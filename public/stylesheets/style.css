@@ -1,0 +1,19 @@
+h1 {
+  margin-bottom: 40px;
+}
+
+#key {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    width: 20%;
+    z-index: 1;
+}
+
+p {
+    font-size: 20px;
+}
+
+form {
+  margin-top: 15px;
+}
