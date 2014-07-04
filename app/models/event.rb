@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
 
       my_hash["results"].each do |result|
         event = self.find_or_create_by(:name => result["name"], :date => result["time"], :url => result["event_url"]) 
-        event.group = Group.find_or_create_by(:name => result["group"]["name"])
+        event.group = Group.find_or_create_by(:name => result["group"]["name"], :urlname => result["group"]["urlname"])
         event.group.color ||= event.group.assign_color
         event.group.members << member unless event.group.members.include?(member)
         event.save

@@ -7,8 +7,6 @@ class App < Sinatra::Base
     Group.delete_all
     Member.delete_all
     GroupMember.delete_all
-    # DatabaseCleaner.strategy = :truncation
-    # DatabaseCleaner.clean
     self.class.members
   end
 

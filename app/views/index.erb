@@ -1,28 +1,37 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/style.css">
   </head>
 
   <body>
     <div class="container-fluid">
-    <h1>Meetup Events This Week</h1>
-    <ul>
+      <div class="col-lg-9 col-md-8 col-sm-8 col-xs-8">
+      <h1>Meetup Events This Week</h1>
       <% @events.each do |event| %>
-        <p>Date: <%= event.date %></p>
-        <p><a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>px; line-height:0.9"/>
-        <%= event.name %> - <%= event.group.name %></p></a>
+        <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>em"/>
+        <%= event.name %></a>
       <% end %>
-    </ul>
+      <form action="/events" method="POST">
+      <button type="submit" class="btn btn-default">Sample more?</button>
+      </form>
 
-    <form action="/events" method="POST">
-    <button type="submit" class="btn btn-default">Sample more?</button>
-    <br />
-    <br />
-    .
-    </form>
+      <br />
+      </div>
 
+      <!--/////////// Group Key //////////-->
+      <div id="key">
+        <h2>Groups<h2>
+        <% @groups.each do |group| %>
+          <p><a href="http://www.meetup.com/<%= group.urlname %>/" target="_blank" style="color: rgb(<%= group.color %>)">
+            <%= group.name %></a>
+          </p>
+        <% end %>
+      </div>
+      <!--/////////// End //////////-->
     </div>
+    
   </body>
 </html>
 
