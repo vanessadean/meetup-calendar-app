@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703235916) do
+ActiveRecord::Schema.define(version: 20140704123920) do
 
   create_table "events", force: true do |t|
     t.string  "date"
@@ -20,10 +20,18 @@ ActiveRecord::Schema.define(version: 20140703235916) do
     t.integer "group_id"
   end
 
+  create_table "group_members", force: true do |t|
+    t.integer "group_id"
+    t.integer "member_id"
+  end
+
   create_table "groups", force: true do |t|
-    t.string  "name"
-    t.string  "color"
-    t.integer "number_members", limit: 255
+    t.string "name"
+    t.string "color"
+  end
+
+  create_table "members", force: true do |t|
+    t.string "meetup_id"
   end
 
 end
