@@ -10,11 +10,11 @@ class Group < ActiveRecord::Base
 
   def font_size
     if self.members.count < 3
-      1.5
-    elsif self.members.count > 12
-      3
+      20
+    elsif self.members.count > 15
+      44
     else
-      2.5
+      32
     end
   end
 

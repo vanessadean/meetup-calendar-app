@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   def self.more
     Member.all.sample(3).each do |member|
-      uri = URI("https://api.meetup.com/2/events?&sign=true&photo-host=public&member_id=#{member.meetup_id}&time=1404858600000,%201405463400000&page=20&key=4d414d6bb7e7f7fb442a717a207f")
+      uri = URI("https://api.meetup.com/2/events?&sign=true&photo-host=public&member_id=#{member.meetup_id}&time=1404946800000,%201405463400000&page=20&key=4d414d6bb7e7f7fb442a717a207f")
       # includes member id, time of one week and API key 
 
       my_hash = JSON.parse(Net::HTTP.get(uri))
