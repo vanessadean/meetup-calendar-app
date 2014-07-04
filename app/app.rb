@@ -1,14 +1,12 @@
 require_relative '../config/environment.rb'
-require 'pry'
-require 'database_cleaner'
 
 class App < Sinatra::Base
 
   def initialize  
     Group.delete_all
     Event.delete_all
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean
+    # DatabaseCleaner.strategy = :truncation
+    # DatabaseCleaner.clean
     self.class.members
   end
 
