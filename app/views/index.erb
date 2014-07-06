@@ -7,31 +7,38 @@
 
   <body>
     <div class="container-fluid">
-      <div class="col-lg-9 col-md-8 col-sm-8 col-xs-8">
-      <h1>Meetup Events This Week</h1>
-      <% @events.each do |event| %>
-        <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>em"/>
-        <%= event.name %></a>
-      <% end %>
-      <form action="/events" method="POST">
-      <button type="submit" class="btn btn-default">Sample more?</button>
-      </form>
 
-      <br />
+      <div class="col-lg-9 col-md-8 col-sm-8 col-xs-8">
+
+        <h1>Meetup Events This Week</h1>
+
+        <% @events.each do |event| %>
+          <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>em"/>
+          <%= event.name %></a>
+        <% end %>
+
+        <form action="/events" method="POST">
+          <button type="submit" class="btn btn-default">Sample more?</button>
+        </form>
+        <br />
+
       </div>
 
       <!--/////////// Group Key //////////-->
       <div id="key">
+
         <h2>Groups<h2>
+
         <% @groups.each do |group| %>
           <p><a href="http://www.meetup.com/<%= group.urlname %>/" target="_blank" style="color: rgb(<%= group.color %>)">
             <%= group.name %></a>
           </p>
         <% end %>
+
       </div>
       <!--/////////// End //////////-->
-    </div>
-    
+      
+    </div> 
   </body>
 </html>
 
