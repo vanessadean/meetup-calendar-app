@@ -5,8 +5,9 @@ class Event < ActiveRecord::Base
   # use Flatiron Presents members as a starting seed
   # and get the other events that they are members of 
   def self.more
+    time_now_in_milliseconds = DateTime.now.strftime('%Q')
     Member.all.sample(3).each do |member|
-      uri = URI("https://api.meetup.com/2/events?&sign=true&photo-host=public&member_id=#{member.meetup_id}&time=1404858600000,%201405463400000&page=20&key=4d414d6bb7e7f7fb442a717a207f")
+      uri = URI("https://api.meetup.com/2/events?&sign=true&photo-host=public&member_id=#{member.meetup_id}&time=#{time_now_in_milliseconds},%20#{(time_now_in_milliseconds.to_i+604800000).to_s}&page=20&key=4d414d6bb7e7f7fb442a717a207f")
       # includes member id, time of one week and API key 
 
       my_hash = JSON.parse(Net::HTTP.get(uri))
