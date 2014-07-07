@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to  :group
-  belongs_to :event_date
+  belongs_to  :event_date
 
   # use Flatiron Presents members as a starting seed
   # and get the other events that they are members of 

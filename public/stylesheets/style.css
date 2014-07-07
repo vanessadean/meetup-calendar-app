@@ -3,11 +3,13 @@ h1 {
 }
 
 #key {
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    width: 20%;
-    z-index: 1;
+  position: fixed; 
+  top: 0px; 
+  right: 10px; 
+  bottom: 0px; 
+  margin-top: 8px; 
+  width: 25%; 
+  overflow: scroll; }
 }
 
 p {
@@ -16,4 +18,8 @@ p {
 
 form {
   margin-top: 15px;
+}
+
+ul {
+  list-style-type: square;
 }
