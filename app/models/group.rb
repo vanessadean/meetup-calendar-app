@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
     if self.members.count < 3
       20
     elsif self.members.count > 15
-      44
+      40
     else
       32
     end
