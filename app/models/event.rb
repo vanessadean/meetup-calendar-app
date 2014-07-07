@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
         event.group = Group.find_or_create_by(:name => result["group"]["name"], :urlname => result["group"]["urlname"])
 
         # assign the group color -- assign color is defined on Group
-        event.group.color ||= event.group.assign_color
+        event.group.assign_color
 
         # add the current member to the group if not already a member
         event.group.members << member unless event.group.members.include?(member)
@@ -37,6 +37,3 @@ class Event < ActiveRecord::Base
     self.event_date = my_date
   end 
 end
-
-# the first five members
-# [9053050, 43730002, 2687742, 152155482, 93522962]

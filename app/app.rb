@@ -1,7 +1,7 @@
 require_relative '../config/environment.rb'
 
 class App < Sinatra::Base
-  
+
   def initialize  
     Event.delete_all
     # Group.delete_all
