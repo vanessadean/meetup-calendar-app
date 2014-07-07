@@ -23,7 +23,7 @@
           <ul>
             <% date.events.each do |event| %>
               <li>
-                <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>em"/>
+                <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>px"/>
                 <%= event.name %></a>
                 <br>
               </li>
