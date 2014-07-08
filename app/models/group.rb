@@ -17,6 +17,5 @@ class Group < ActiveRecord::Base
       28
     end
   end
-
 end
 
