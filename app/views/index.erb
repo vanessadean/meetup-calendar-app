@@ -24,6 +24,7 @@
           <h3><%= date.nice_format %></h3>
           <ul>
             <% date.events.each do |event| %>
+
               <li>
                 <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>px; "/>
                 <%= event.name %></a>
