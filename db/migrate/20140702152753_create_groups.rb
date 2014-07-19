@@ -3,7 +3,7 @@ class CreateGroups < ActiveRecord::Migration
     create_table :groups do |t|
       t.string  :name
       t.string  :color
-      t.string  :count
+      t.string  :urlname
     end
   end
 end

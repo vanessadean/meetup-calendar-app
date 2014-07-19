@@ -12,6 +12,8 @@
 *.log
 *.sql
 *.sqlite
+projectdb/
+logfile
 
 # OS generated files #
 ######################

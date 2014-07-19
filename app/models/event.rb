@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
         # create the event if not exists
         event = self.find_or_create_by(
           :name => result["name"], 
-          :date => result["time"], 
+          :date => result["time"]/1000, 
           :url => result["event_url"]) 
 
         # create the group if not exists, and assign it to the event
@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
         event.group.members << member unless event.group.members.include?(member)
 
         # add the event date
-        event.assign_date(Time.at(event.date.to_i/1000).to_date)
+        event.assign_date(Time.at(event.date.to_i).to_date)
 
         event.save
       end
