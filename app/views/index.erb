@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../../stylesheets/style.css">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <style> 
-    h1{ margin-bottom: 40px; }
+    h1 { margin-bottom: 40px; }
     #key { position: fixed; top: 0px; right: 10px; bottom:0px; margin-top: 8px; width: 25%; overflow: scroll; }
     p { font-size: 20px; }
     form { margin-top: 15px; }
@@ -22,23 +22,20 @@
 
         <% @dates.each do |date| %>
           <h3><%= date.nice_format %></h3>
-          <ul>
+            <ul>
             <% date.events.each do |event| %>
-
-              <li>
-                <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>px; "/>
+              <p>&#9642; <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>px; line-height: 1;"/>
                 <%= event.name %></a>
-                <br>
-              </li>
+              </p>
             <% end %>
-          </ul>
+            </ul>
         <% end %>   
         
         <form action="/events" method="POST">
-          <button type="submit" class="btn btn-default btn-lg">Get more events?</button>
+          <button type="submit" class="btn btn-default btn-lg">Get more events</button>
         </form>
         <br />
-        <p class="footer">Created by <a href="https://github.com/natalieparellano">Natalie Parellano</a> and <a href="http://www.thisisvanessa.com">Vanessa Dean</a>.</p>
+        <p class="footer">Created by <a href="https://github.com/natalieparellano" target="_blank">Natalie Parellano</a> and <a href="http://www.thisisvanessa.com" target="_blank">Vanessa Dean</a> at the <a href="http://flatironschool.com/" target="_blank">Flatiron School</a>.</p>
       </div>
 
       <!--/////////// Group Key //////////-->
