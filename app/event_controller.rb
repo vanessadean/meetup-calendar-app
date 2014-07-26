@@ -1,10 +1,11 @@
 class EventController < Sinatra::Base
     
   get '/' do
+    Member.get_members
     Event.more
     @events = Event.all.sort_by { |event| event.date }.uniq
     @groups = @events.collect { |event| event.group }.sort_by{ |group| group.name }.uniq
-    @dates  = @events.collect { |event| event.event_date }.uniq
+    @dates = @events.collect { |event| event.event_date }.uniq
     erb :index
   end
 
