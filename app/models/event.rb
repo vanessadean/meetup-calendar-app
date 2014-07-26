@@ -26,7 +26,8 @@ class Event < ActiveRecord::Base
         event.group.assign_color
 
         # add the current member to the group if not already a member
-        event.group.members << member unless event.group.members.include?(member)
+        event.group.group_members.build(:member_id => member[:id])
+        # event.group.members << member unless event.group.members.include?(member)
 
         # add the event date
         event.assign_date(Time.at(event.date.to_i).to_date)
@@ -37,7 +38,6 @@ class Event < ActiveRecord::Base
   end
 
   def assign_date(new_date)
-    my_date = EventDate.find_or_create_by(event_date: new_date)
-    self.event_date = my_date
+    self.event_date = EventDate.find_or_create_by(event_date: new_date)
   end 
 end
