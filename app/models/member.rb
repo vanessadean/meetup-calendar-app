@@ -11,8 +11,8 @@ class Member < ActiveRecord::Base
   def self.get_members
     members_hash = @@members_hash["results"]
     if @@i < members_hash.length
-      members_hash[@@i..(@@i+2)].each { |result| Member.find_or_create_by(:meetup_id => result["id"]) }
+      members_hash[@@i...(@@i+5].each { |result| Member.find_or_create_by(:meetup_id => result["id"]) }
     end
-    @@i += 3
+    @@i += 5
   end
 end
