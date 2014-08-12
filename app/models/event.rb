@@ -26,7 +26,8 @@ class Event < ActiveRecord::Base
         event.group.assign_color
 
         # add the current member to the group if not already a member
-        event.group.group_members.build(:member_id => member[:id]).save
+        event.group.group_members.find_or_initialize_by(:member_id => member[:id]).save
+        # event.group.group_members.build(:member_id => member[:id]).save unless event.group.members.include?(member)
         # event.group.members << member unless event.group.members.include?(member)
 
         # add the event date
