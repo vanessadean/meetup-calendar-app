@@ -1,10 +1,25 @@
 ENV['SINATRA_ENV'] ||= "development"
 
+Bundler.require
 require 'net/http'
-require 'bundler/setup'
-Bundler.require(:default, ENV['SINATRA_ENV'])
-
-ActiveRecord::Base.establish_connection('postgres://dqsavrsbkskmji:FTd8XFQ5qLxHdLrqeVlUgVJ9Zv@ec2-174-129-218-200.compute-1.amazonaws.com:5432/ddbicalf945n8')
-
+require 'pry'
+require 'sinatra/base'
 require_all 'app'
+
+configure :development do
+  set :database, "sqlite3:database.db"
+end
+
+configure :production do
+ db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///localhost/database')
+
+ ActiveRecord::Base.establish_connection(
+   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+   :host     => db.host,
+   :username => db.user,
+   :password => db.password,
+   :database => db.path[1..-1],
+   :encoding => 'utf8'
+ )
+end
 
