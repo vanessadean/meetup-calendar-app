@@ -1,6 +1,5 @@
 ENV['SINATRA_ENV'] ||= "development"
 
-require 'pry'
 require 'net/http'
 require 'bundler'
 Bundler.require
