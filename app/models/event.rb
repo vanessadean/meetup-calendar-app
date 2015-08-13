@@ -1,13 +1,14 @@
 class Event < ActiveRecord::Base
   belongs_to  :group
-  belongs_to  :event_date
 
   # use Flatiron Presents members as a starting seed
   # and get the other events that they are members of
   def self.get_events
-    members_hash = @@members_hash["results"]
-    members_hash[@@i...(@@i+5)].each do |member|
-      uri = URI("https://api.meetup.com/2/events?&sign=true&photo-host=public&member_id=#{member.meetup_id}&time=#{App.time_now},%20#{(App.time_now+604800000).to_s}&page=20&key=4d414d6bb7e7f7fb442a717a207f")
+    members_hash = App.members_hash
+    index = App.member_index_counter
+    index+5 > members_hash.length ? max = members_hash.length : max = index+5
+    members_hash[index...max].each do |member|
+      uri = URI("https://api.meetup.com/2/events?&sign=true&photo-host=public&member_id=#{member["id"]}&time=#{App.time_now},%20#{(App.time_now+604800000).to_s}&page=20&key=4d414d6bb7e7f7fb442a717a207f")
 
       events = JSON.parse(Net::HTTP.get(uri))
 
@@ -15,7 +16,7 @@ class Event < ActiveRecord::Base
         # create the event if not exists
         event = self.find_or_create_by(
           :name => result["name"],
-          :date => result["time"]/1000,
+          :time => result["time"]/1000,
           :url => result["event_url"])
 
         # create the group if not exists, and assign it to the event
@@ -26,19 +27,25 @@ class Event < ActiveRecord::Base
         # assign the group color
         event.group.assign_color
 
-        # tally up the number of members
-        event.group.members += 1
+        # add member to the group
+        event.popularity += 1
 
         # add the event date
-        event.assign_date(Time.at(event.date.to_i).to_date)
+        event.date = Time.at(result["time"]/1000).to_date
 
         event.save
       end
     end
-    @@i += 5
+    App.uptick_member_index_counter
   end
 
-  def assign_date(new_date)
-    self.event_date = EventDate.find_or_create_by(event_date: new_date)
+  def font_size
+    if popularity < 3
+      20
+    elsif popularity > 15
+      40
+    else
+      28
+    end
   end
 end

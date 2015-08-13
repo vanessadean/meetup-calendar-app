@@ -20,11 +20,11 @@
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
         <h1>What Are My Flatiron School <br />Friends Up To This Week?</h1>
 
-        <% @dates.each do |date| %>
-          <h3><%= date.nice_format %></h3>
+        <% @events.each do |date, events| %>
+          <h3><%= date.strftime("%A, %B %d, %Y") %></h3>
             <ul>
-            <% date.events.each do |event| %>
-              <p>&#9642; <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.group.font_size %>px; line-height: 1;"/>
+            <% events.each do |event| %>
+              <p>&#9642; <a href="<%= event.url %>" target="_blank" style="color: rgb(<%= event.group.color %>); font-size: <%= event.font_size %>px; line-height: 1;"/>
                 <%= event.name %></a>
               </p>
             <% end %>
