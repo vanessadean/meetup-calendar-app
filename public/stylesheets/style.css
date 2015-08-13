@@ -3,12 +3,12 @@ h1 {
 }
 
 #key {
-  position: fixed; 
-  top: 0px; 
-  right: 10px; 
-  bottom: 0px; 
-  margin-top: 8px; 
-  width: 25%; 
+  position: fixed;
+  top: 0px;
+  right: 10px;
+  bottom: 0px;
+  margin-top: 8px;
+  width: 25%;
   overflow: scroll; }
 }
 
