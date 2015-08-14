@@ -32,12 +32,12 @@
       <!--/////////// Group Key //////////-->
       <div id="key">
 
-        <h2>Meetup Groups<h2>
+        <h2>Meetup Groups</h2>
 
         <% @groups.each do |group| %>
-          <p><a href="http://www.meetup.com/<%= group.urlname %>/" target="_blank" style="color: rgb(<%= group.color %>)">
+          <h4><a href="http://www.meetup.com/<%= group.urlname %>/" target="_blank" style="color: rgb(<%= group.color %>)">
             <%= group.name %></a>
-          </p>
+          </h4>
         <% end %>
 
       </div>
