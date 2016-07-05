@@ -8,8 +8,7 @@
 
   <body>
     <div class="container-fluid">
-
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+      <div class="col-lg-6 col-md-6 col-sm-9 col-xs-12">
         <h1>What Are My Flatiron School <br />Friends Up To This Week?</h1>
 
         <% @events.each do |date, events| %>
@@ -26,12 +25,13 @@
         <form action="/" method="GET">
           <button type="submit" class="btn btn-default btn-lg">Get more events</button>
         </form>
-        <br />
+
+        </br>
         <p class="footer">Created by <a href="https://github.com/natalieparellano" target="_blank">Natalie Arellano</a> and <a href="http://www.thisisvanessa.com" target="_blank">Vanessa Dean</a> at the <a href="http://flatironschool.com/" target="_blank">Flatiron School</a>.</p>
       </div>
 
       <!--/////////// Group Key //////////-->
-      <div id="key">
+      <div id="key" class="col-lg-6 col-md-6 col-sm-3 col-xs-12">
 
         <h2>Meetup Groups</h2>
 
@@ -43,7 +43,6 @@
 
       </div>
       <!--/////////// End //////////-->
-
     </div>
   </body>
 </html>
